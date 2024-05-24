@@ -29,3 +29,6 @@ jobs:
 
       - name: Build images
         run: make docker-build
+
+      - name: Release
+        run: make docker-release
