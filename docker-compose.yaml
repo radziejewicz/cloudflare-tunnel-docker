@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  tunnel:
+    container_name: cloudflared-tunnel
+    image: ghcr.io/radziejewicz/cloudflare-tunnel-docker:latest
+    restart: unless-stopped
+    command: tunnel run
+    env_file:
+      - .env
+

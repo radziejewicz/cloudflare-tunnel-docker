@@ -1,14 +1,16 @@
 name: Build
 
 on:
-  pull_request:
-    paths:
-      - "Dockerfile"
-      - "Makefile"
+  # pull_request:
+  #   paths:
+  #     - "Dockerfile"
+  #     - "Makefile"
   push:
     branches:
       - main
-
+    paths:
+          - "Dockerfile"
+          - "Makefile"  
 
 jobs:
   ci:
