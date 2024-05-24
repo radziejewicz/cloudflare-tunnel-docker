@@ -18,6 +18,4 @@ docker-release:
 		--platform linux/amd64,linux/arm64,linux/arm/v7 \
 		--tag ghcr.io/radziejewicz/cloudflare-tunnel-docker:$(VERSION) \
 		--tag ghcr.io/radziejewicz/cloudflare-tunnel-docker:latest \
-		--tag radziejewicz/cloudflare-tunnel-docker:$(VERSION) \
-		--tag radziejewicz/cloudflare-tunnel-docker:latest \
 		--push
