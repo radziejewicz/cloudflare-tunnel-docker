@@ -27,8 +27,8 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}  
 
-      - name: Build images
-        run: make docker-build
+      #- name: Build image
+      #  run: make docker-build
 
-      - name: Release
+      - name: Release image
         run: make docker-release

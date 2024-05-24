@@ -16,8 +16,8 @@ docker-release:
 		--file Dockerfile \
 		--build-arg=CLOUDFLARED_VERSION=$(VERSION) \
 		--platform linux/amd64,linux/arm64,linux/arm/v7 \
-		--tag ghcr.io/radziejewicz/cloudflared:$(VERSION) \
-		--tag ghcr.io/radziejewicz/cloudflared:latest \
-		--tag radziejewicz/cloudflared:$(VERSION) \
-		--tag radziejewicz/cloudflared:latest \
+		--tag ghcr.io/radziejewicz/cloudflare-tunnel-docker:$(VERSION) \
+		--tag ghcr.io/radziejewicz/cloudflare-tunnel-docker:latest \
+		--tag radziejewicz/cloudflare-tunnel-docker:$(VERSION) \
+		--tag radziejewicz/cloudflare-tunnel-docker:latest \
 		--push
