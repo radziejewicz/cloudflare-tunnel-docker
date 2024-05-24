@@ -5,6 +5,10 @@ on:
     paths:
       - "Dockerfile"
       - "Makefile"
+  push:
+    branches:
+      - main
+
 
 jobs:
   ci:
@@ -18,4 +22,3 @@ jobs:
 
       - name: Build images
         run: make docker-build
-        
