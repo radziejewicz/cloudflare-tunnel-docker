@@ -17,7 +17,7 @@ COPY . .
 
 RUN .teamcity/install-cloudflare-go.sh
 
-RUN GOOS=linux GOARCH=arm64 PATH="/tmp/go/bin:$PATH" make cloudflared
+RUN GOOS=linux GOARCH=${TARGETARCH} PATH="/tmp/go/bin:$PATH" make cloudflared
 
 FROM gcr.io/distroless/base-debian11:nonroot
 
