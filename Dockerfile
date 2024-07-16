@@ -24,7 +24,7 @@ RUN ls -lah
 
 FROM gcr.io/distroless/base-debian11:nonroot
 
-COPY --from=builder /go/src/github.com/cloudflare/cloudflared /usr/local/bin/
+COPY --from=builder --chown=nonroot /go/src/github.com/cloudflare/cloudflared/cloudflared /usr/local/bin/
 
 USER nonroot
 
