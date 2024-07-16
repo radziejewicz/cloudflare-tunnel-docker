@@ -13,15 +13,15 @@ WORKDIR /go/src/github.com/cloudflare/
 
 RUN git clone --branch ${CLOUDFLARED_VERSION} --single-branch --depth 1 https://github.com/cloudflare/cloudflared.git
 
-RUN ls -lah
+RUN cd cloudflared
 
-RUN cloudflared/.teamcity/install-cloudflare-go.sh
+RUN .teamcity/install-cloudflare-go.sh
 
 RUN GOOS=linux GOARCH=${TARGETARCH} PATH="/tmp/go/bin:$PATH" make cloudflared
 
 FROM gcr.io/distroless/base-debian11:nonroot
 
-COPY --from=builder /go/src/github.com/cloudflare/cloudflared/cloudflared /usr/local/bin/
+COPY --from=builder /go/src/github.com/cloudflare/cloudflared /usr/local/bin/
 
 USER nonroot
 
