@@ -8,16 +8,10 @@ ARG CLOUDFLARED_VERSION
 
 ENV GO111MODULE=on \
     CGO_ENABLED=0
+    
+RUN apt-get update && apt-get install -y ca-certificates   
 
-
-WORKDIR /tmp
-RUN git clone -q https://github.com/cloudflare/go
-WORKDIR /tmp/go/src
-RUN git checkout -q ec0a014545f180b0c74dfd687698657a9e86e310 && \
-./make.bash
-   
-
-WORKDIR /go/src/github.com/cloudflare/cloudflared/
+WORKDIR /go/src/github.com/cloudflare//
 
 RUN git clone --branch ${CLOUDFLARED_VERSION} --single-branch --depth 1 https://github.com/cloudflare/cloudflared.git && \ 
     cd cloudflared && \
