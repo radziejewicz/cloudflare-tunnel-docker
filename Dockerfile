@@ -8,18 +8,21 @@ ARG CLOUDFLARED_VERSION
 
 ENV GO111MODULE=on \
     CGO_ENABLED=0
-    
-RUN apt-get update && apt-get install -y ca-certificates   
 
-WORKDIR /go/src/github.com/cloudflare//
+WORKDIR /go/src/github.com/cloudflare/
 
-RUN git clone --branch ${CLOUDFLARED_VERSION} --single-branch --depth 1 https://github.com/cloudflare/cloudflared.git && \ 
-    cd cloudflared && \
-    GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -v -mod=vendor -ldflags "-w -s -X 'main.Version=${CLOUDFLARED_VERSION}'" github.com/cloudflare/cloudflared/cmd/cloudflared
+RUN git clone --branch ${CLOUDFLARED_VERSION} --single-branch --depth 1 https://github.com/cloudflare/cloudflared.git && cd cloudflared
+
+COPY . .
+
+RUN .teamcity/install-cloudflare-go.sh
+
+RUN GOOS=linux GOARCH=arm64 PATH="/tmp/go/bin:$PATH" make cloudflared
 
 FROM gcr.io/distroless/base-debian11:nonroot
 
 COPY --from=builder /go/src/github.com/cloudflare/cloudflared/cloudflared /usr/local/bin/
+
 
 USER nonroot
 
