@@ -28,4 +28,6 @@ COPY --from=builder /go/src/github.com/cloudflare/cloudflared /usr/local/bin/
 
 USER nonroot
 
+RUN ls -lah /usr/local/bin/cloudflared
+
 ENTRYPOINT ["/usr/local/bin/cloudflared", "--no-autoupdate"]
