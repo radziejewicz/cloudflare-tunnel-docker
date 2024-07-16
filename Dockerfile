@@ -11,7 +11,8 @@ ENV GO111MODULE=on \
 
 WORKDIR /go/src/github.com/cloudflare/
 
-RUN git clone --branch ${CLOUDFLARED_VERSION} --single-branch --depth 1 https://github.com/cloudflare/cloudflared.git
+RUN git clone --branch ${CLOUDFLARED_VERSION} --single-branch --depth 1 https://github.com/cloudflare/cloudflared.git && \
+    cd cloudflared
 
 RUN ls -lah
 RUN ls -lah cloudflared
