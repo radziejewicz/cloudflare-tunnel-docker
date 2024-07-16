@@ -21,7 +21,7 @@ RUN GOOS=linux GOARCH=${TARGETARCH} PATH="/tmp/go/bin:$PATH" make cloudflared
 
 FROM gcr.io/distroless/base-debian11:nonroot
 
-COPY --from=builder /go/src/github.com/cloudflare/cloudflared/cloudflared /usr/local/bin/
+COPY --from=builder /go/src/github.com/cloudflare/cloudflared /usr/local/bin/
 
 USER nonroot
 
