@@ -14,7 +14,6 @@ WORKDIR /go/src/github.com/cloudflare/
 RUN git clone --branch ${CLOUDFLARED_VERSION} --single-branch --depth 1 https://github.com/cloudflare/cloudflared.git .
 
 RUN ls -lah
-RUN ls -lah cloudflared
 RUN pwd
 
 RUN .teamcity/install-cloudflare-go.sh
